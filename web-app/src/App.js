@@ -1,31 +1,44 @@
 import React from "react";
-import NavBar from "./components/NavBar";
-import { useAuth0 } from "./utils/react-auth0-spa";
-// New - import the React Router components, and the Profile page component
 import { Router, Route, Switch } from "react-router-dom";
-import Profile from "./components/Profile";
+import { Container } from "reactstrap";
+
+import PrivateRoute from "./components/PrivateRoute";
+import Loading from "./components/Loading";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Home from "./views/Home";
+import Profile from "./views/Profile";
+import { useAuth0 } from "./utils/react-auth0-spa";
 import history from "./utils/history";
 
-function App() {
+// styles
+import "./App.css";
+
+// fontawesome
+import initFontAwesome from "./utils/initFontAwesome";
+initFontAwesome();
+
+const App = () => {
   const { loading } = useAuth0();
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
+
   return (
-    <div className="App">
-      {/* Don't forget to include the history module */}
-      <Router history={history}>
-        <header>
-          <NavBar />
-        </header>
-        <Switch>
-          <Route path="/" exact />
-          <Route path="/profile" component={Profile} />
-        </Switch>
-      </Router>
-    </div>
+    <Router history={history}>
+      <div id="app" className="d-flex flex-column h-100">
+        <Header />
+        <Container className="flex-grow-1 mt-5">
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <PrivateRoute path="/profile" component={Profile} />
+          </Switch>
+        </Container>
+        <Footer />
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
