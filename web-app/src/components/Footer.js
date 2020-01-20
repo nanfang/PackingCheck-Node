@@ -1,10 +1,10 @@
 import React from "react";
 
 const Footer = () => (
-  <footer className="bg-light p-10 text-center">
-    <p>
-      © 2020 PackingCheck 
-    </p>
+  <footer className="bg-light p-8 text-center mt-auto">
+    <div footer-copyright text-center py-8>
+      © 2020 PackingCheck, by <a href="nanfang.me">Fang Nan</a>
+    </div>
   </footer>
 );
 

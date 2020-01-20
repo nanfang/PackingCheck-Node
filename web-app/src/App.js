@@ -6,7 +6,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Loading from "./components/Loading";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Home from "./views/Home";
+import Main from "./views/Main";
 import Profile from "./views/Profile";
 import { useAuth0 } from "./utils/react-auth0-spa";
 import history from "./utils/history";
@@ -31,7 +31,7 @@ const App = () => {
         <Header />
         <Container className="flex-grow-1 mt-5">
           <Switch>
-            <Route path="/" exact component={Home} />
+            <Route path="/" exact component={Main} />
             <PrivateRoute path="/profile" component={Profile} />
           </Switch>
         </Container>

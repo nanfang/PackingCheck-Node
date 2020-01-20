@@ -3,7 +3,7 @@ import { useAuth0 } from "../utils/react-auth0-spa";
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'
 
-const _Greeting = () => {
+const Greeting = () => {
     const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
     if (isAuthenticated)
         return (
@@ -25,7 +25,7 @@ const Header = () => {
                 </LinkContainer>
             </Nav>
             <Nav>
-                <_Greeting />
+                <Greeting />
             </Nav>
 
         </Navbar >
