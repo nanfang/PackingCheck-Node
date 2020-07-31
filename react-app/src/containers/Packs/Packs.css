@@ -1,0 +1,14 @@
+.left {
+    /*float: left;*/
+    display:inline-block;
+    vertical-align: text-top;
+    width: 50%;
+}
+
+/*.right {*/
+/*    !*float: left;*!*/
+
+/*    display:inline-block;*/
+/*    width: 50%;*/
+
+/*}*/
