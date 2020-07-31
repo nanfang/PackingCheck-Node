@@ -6,7 +6,7 @@ import './Packs.css';
 class Packs extends Component {
 
     state = {
-        newPack: null,
+        newPack: '',
         packs: [],
         selectedPack: {id: null, name: ''},
         items: []
@@ -21,8 +21,7 @@ class Packs extends Component {
     }
 
     loadPacks = () => {
-        // TODO: config the server URL
-        axios.get("http://my-json-server.typicode.com/nanfang/fakejson/packs")
+        axios.get("/packs")
             .then(response => {
                 console.log(response)
                 this.setState({packs: response.data})

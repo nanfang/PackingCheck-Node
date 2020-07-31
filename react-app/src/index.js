@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'http://my-json-server.typicode.com/nanfang/fakejson';
 
 ReactDOM.render(
   <React.StrictMode>
