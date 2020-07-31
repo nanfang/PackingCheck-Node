@@ -5,7 +5,7 @@ import "./Layout.css";
 const Layout = (props) => (
   <React.Fragment>
     <header>
-      <nav className="navbar navbar-expand-sm navbar-light bg-warning">
+      <nav className="navbar navbar-expand-md navbar-light">
         <div className="container-fluid">
           <a href="index.html" className="navbar-brand">
             Packing Check
@@ -30,7 +30,7 @@ const Layout = (props) => (
                 </a>
               </li>
               <li className="nav-item">
-                <a href="#" className="btn btn-outline-dark">
+                <a href="#" className="btn btn-sm btn-outline-dark my-1 py-0">
                   Sign Up
                 </a>
               </li>
@@ -58,28 +58,38 @@ const Layout = (props) => (
             <ul className="list-group text-left">
               <li className="list-group-item">
                 Trip to Beijing
-                <div className="float-right text-muted">Remove</div>
+                <a href="#" className="float-right">
+                  Remove
+                </a>
               </li>
               <li className="list-group-item active">
                 Trip to Wuhan
-                <div className="float-right text-muted">Remove</div>
+                <a href="#" className="float-right">
+                  Remove
+                </a>
               </li>
               <li className="list-group-item">
                 Trip to Shanghai
-                <div className="float-right text-muted">Remove</div>
+                <a href="#" className="float-right">
+                  Remove
+                </a>
               </li>
               <li className="list-group-item">
                 Trip to Beidaihe
-                <div className="float-right text-muted">Remove</div>
+                <a href="#" className="float-right">
+                  Remove
+                </a>
               </li>
               <li className="list-group-item">
                 Trip to Lijiang
-                <div className="float-right text-muted">Remove</div>
+                <a href="#" className="float-right">
+                  Remove
+                </a>
               </li>
             </ul>
           </div>
 
-          <div className="col-sm text-center">
+          <div className="col-md text-center">
             <h2>Packing Items</h2>
             <div className="card" style={{ width: "90%" }}>
               <div className="card-body">
@@ -89,28 +99,63 @@ const Layout = (props) => (
                   <ul className="list-group list-group-flush">
                     <li className="list-group-item far fa-plus-spuare">
                       Cras justo odio
-                      <div className="float-right text-danger ml-2">⊗</div>
-                      <div className="float-right text-warning">△ ▽</div>  
+                      <div className="float-right my-text-primary-color ml-2">
+                        <a href="">⊗</a>
+                      </div>
+                      <div className="float-right my-text-primary-color">
+                        <a href="" className="px-2">
+                          △
+                        </a>
+                        <a href="">▽</a>
+                      </div>
                     </li>
                     <li className="list-group-item">
                       Dapibus ac facilisis in
-                      <div className="float-right text-danger ml-2">⊗</div>
-                      <div className="float-right text-warning">△ ▽</div>
+                      <div className="float-right my-text-primary-color ml-2">
+                        <a href="">⊗</a>
+                      </div>
+                      <div className="float-right my-text-primary-color">
+                        <a href="" className="px-2">
+                          △
+                        </a>
+                        <a href="">▽</a>
+                      </div>
                     </li>
                     <li className="list-group-item">
                       Morbi leo risus
-                      <div className="float-right text-danger ml-2">⊗</div>
-                      <div className="float-right text-warning">△ ▽</div>
+                      <div className="float-right my-text-primary-color ml-2">
+                        <a href="">⊗</a>
+                      </div>
+                      <div className="float-right my-text-primary-color">
+                        <a href="" className="px-2">
+                          △
+                        </a>
+                        <a href="">▽</a>
+                      </div>
                     </li>
                     <li className="list-group-item">
                       Porta ac consectetur ac
-                      <div className="float-right text-danger ml-2">⊗</div>
-                      <div className="float-right text-warning">△ ▽</div>
+                      <div className="float-right my-text-primary-color ml-2">
+                        <a href="">⊗</a>
+                      </div>
+                      <div className="float-right my-text-primary-color">
+                        <a href="" className="px-2">
+                          △
+                        </a>
+                        <a href="">▽</a>
+                      </div>
                     </li>
                     <li className="list-group-item">
                       Vestibulum at eros
-                      <div className="float-right text-danger ml-2">⊗</div>
-                      <div className="float-right text-warning">△ ▽</div>
+                      <div className="float-right my-text-primary-color ml-2">
+                        <a href="">⊗</a>
+                      </div>
+                      <div className="float-right my-text-primary-color">
+                        <a href="" className="px-2">
+                          △
+                        </a>
+                        <a href="">▽</a>
+                      </div>
                     </li>
                   </ul>
                   <div className="input-group my-3">
@@ -137,23 +182,8 @@ const Layout = (props) => (
 
     <main>{props.children}</main>
 
-    {/*     <footer
-      id="main-footer"
-      className="text-center p-2 bg-secondary text-white"
-    >
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <p>
-              Copyright &copy; <span id="year"></span> PackingCheck
-            </p>
-          </div>
-        </div>
-      </div>
-    </footer> */}
-
     <footer
-      className="footer bg-secondary text-white fixed-bottom p-2"
+      className="footer text-muted fixed-bottom pt-1 mb-0"
       id="main-footer"
     >
       <div className="container">

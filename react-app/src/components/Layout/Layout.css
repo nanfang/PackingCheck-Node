@@ -1,12 +1,52 @@
-.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+.list-group-item.active {
     z-index:2;
-    color:#ffffff;
-    background-color:#f1c40f;
-    border-color:#f1c40f;
+    color:#333;
+    background-color:#EFE3D4;
+    border-color:#EFE3D4;
   }
 
-  .input-group-text {
-    background-color: #f1c40f;
+  .list-group-item:hover, .list-group-item:focus, .list-group-item.active:hover, .list-group-item.active:focus {
+    z-index:2;
+    color:#fff;
+    background-color:#AAA0A0;
+    border-color:#AAA0A0;
   }
+
+
+  .input-group-text {
+    color: #fff;
+    background-color: #6F1E51;
+  }
+  .input-group-text:hover {
+    color: #ddd;
+    background-color: #6F1E51;
+    text-decoration: underline;
+    
+  }
+
+  .navbar {
+    background-color: #EFE3D4;
+    height: 40px;
+    font-size: small;
+  }
+  
+
+  .footer {
+    background-color: #EFE3D4;
+  }
+
+  .my-text-primary-color {
+    color:  #6F1E51;
+  }
+
+  a:link, a:visited {
+    color: #6F1E51;
+  }
+  a:hover, a:active {
+    color: #000;
+  }
+  
+
+ 
 
 
