@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Layout.css";
+import icon from "./img/new_icon.png";
 
 const Layout = (props) => (
   <React.Fragment>
@@ -8,7 +9,7 @@ const Layout = (props) => (
       <nav className="navbar navbar-expand-md navbar-light">
         <div className="container-fluid">
           <a href="index.html" className="navbar-brand">
-            Packing Check
+            <img src={icon} className="img-fluid mr-2 py-2" />Packing Check
           </a>
           <button
             className="navbar-toggler"
