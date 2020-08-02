@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import axios from 'axios';
 
 axios.defaults.baseURL = 'http://my-json-server.typicode.com/nanfang/fakejson';
+// https://packingcheck-api-lite.firebaseio.com/
 
 ReactDOM.render(
   <React.StrictMode>
