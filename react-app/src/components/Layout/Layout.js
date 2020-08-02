@@ -9,7 +9,8 @@ const Layout = (props) => (
       <nav className="navbar navbar-expand-md navbar-light">
         <div className="container-fluid">
           <a href="index.html" className="navbar-brand">
-            <img src={icon} className="img-fluid mr-2 py-2" />Packing Check
+            <img src={icon} className="img-fluid mr-2 py-2" />
+            Packing Check
           </a>
           <button
             className="navbar-toggler"
@@ -43,62 +44,109 @@ const Layout = (props) => (
 
     <section id="main-content">
       <div className="container">
-        <div className="row p-4">
-          <div className="col-sm text-center mr-5">
-            <h2>Packs</h2>
-            <div className="input-group mb-3">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Your next destination"
-              />
-              <div className="input-group-append">
-                <button className="input-group-text">Create a new pack</button>
+        <div className="row mt-5">
+          <div className="col-md">
+            <div className="card bg-white">
+              <div
+                className="card-header mx-auto shadow p-3 bg-white rounded vert-offset-top"
+                style={{ width: "98%" }}
+              >
+                <h4 className="card-title text-left">Packs</h4>
+                <div
+                  className="input-group mb-3 mx-auto"
+                  style={{ width: "100%" }}
+                >
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Your next destination"
+                  />
+                  <div className="input-group-append">
+                    <button className="input-group-text">
+                      Create a new pack
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="card-body">
+                <ul className="list-group text-left">
+                  <li className="list-group-item">
+                    Trip to Beijing
+                    <a href="#" className="float-right">
+                      Remove
+                    </a>
+                  </li>
+                  <li className="list-group-item active">
+                    Trip to Wuhan
+                    <a href="#" className="float-right">
+                      Remove
+                      <div className="float-right offset-right">
+                        <svg
+                          width="1em"
+                          height="1em"
+                          viewBox="0 0 16 16"
+                          class="bi bi-chevron-right"
+                          fill="currentColor"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                          />
+                        </svg>
+                      </div>
+                    </a>
+                  </li>
+                  <li className="list-group-item">
+                    Trip to Shanghai
+                    <a href="#" className="float-right">
+                      Remove
+                    </a>
+                  </li>
+                  <li className="list-group-item">
+                    Trip to Beidaihe
+                    <a href="#" className="float-right">
+                      Remove
+                    </a>
+                  </li>
+                  <li className="list-group-item">
+                    Trip to Lijiang
+                    <a href="#" className="float-right">
+                      Remove
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
-            <ul className="list-group text-left">
-              <li className="list-group-item">
-                Trip to Beijing
-                <a href="#" className="float-right">
-                  Remove
-                </a>
-              </li>
-              <li className="list-group-item active">
-                Trip to Wuhan
-                <a href="#" className="float-right">
-                  Remove
-                </a>
-              </li>
-              <li className="list-group-item">
-                Trip to Shanghai
-                <a href="#" className="float-right">
-                  Remove
-                </a>
-              </li>
-              <li className="list-group-item">
-                Trip to Beidaihe
-                <a href="#" className="float-right">
-                  Remove
-                </a>
-              </li>
-              <li className="list-group-item">
-                Trip to Lijiang
-                <a href="#" className="float-right">
-                  Remove
-                </a>
-              </li>
-            </ul>
           </div>
 
-          <div className="col-md text-center">
-            <h2>Packing Items</h2>
-            <div className="card" style={{ width: "90%" }}>
+          <div className="col-md">
+            <div className="card packing-items">
+              <div className="card-header mx-auto" style={{ width: "100%" }}>
+                <h4 className="card-title text-left">Your trip to Wuhan </h4>
+                <h6 className="card-subtitle text-left text-muted">Checklist</h6>
+              </div>
               <div className="card-body">
-                <h5 className="card-title">Your trip to Beijing</h5>
-                <h6 className="card-subtitle mb-2 text-muted">Checklist</h6>
                 <div className="card-text text-left">
-                  <ul className="list-group list-group-flush">
-                    <li className="list-group-item far fa-plus-spuare">
+                  <ul className="list-group list-group-flush shadow-sm p-3 mb-3 bg-white rounded">
+                    <li className="list-group-item">
+                      <div
+                        className="input-group mb-3 mx-auto"
+                        style={{ width: "100%" }}
+                      >
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="New item"
+                        />
+                        <div className="input-group-append">
+                          <button className="input-group-text">
+                            Add a new item
+                          </button>
+                        </div>
+                      </div>
+                    </li>
+                    <li className="list-group-item">
                       Cras justo odio
                       <div className="float-right my-text-primary-color ml-2">
                         <a href="">⊗</a>
@@ -159,18 +207,6 @@ const Layout = (props) => (
                       </div>
                     </li>
                   </ul>
-                  <div className="input-group my-3">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="New Item"
-                    />
-                    <div className="input-group-append">
-                      <button className="input-group-text">
-                        Add a new item
-                      </button>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -183,10 +219,7 @@ const Layout = (props) => (
 
     <main>{props.children}</main>
 
-    <footer
-      className="footer text-muted fixed-bottom pt-1 mb-0"
-      id="main-footer"
-    >
+    <footer className="footer text-muted fixed-bottom" id="main-footer">
       <div className="container">
         <p>
           Copyright &copy; <span id="year"></span> PackingCheck

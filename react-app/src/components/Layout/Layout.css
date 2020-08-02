@@ -1,15 +1,15 @@
 .list-group-item.active {
     z-index:2;
     color:#333;
-    background-color:#EFE3D4;
+    background-color:#F7F9F9;
     border-color:#EFE3D4;
   }
 
   .list-group-item:hover, .list-group-item:focus, .list-group-item.active:hover, .list-group-item.active:focus {
     z-index:2;
-    color:#fff;
-    background-color:#AAA0A0;
-    border-color:#AAA0A0;
+    color:#333;
+    background-color:#EFE3D4;
+    border-color:#EFE3D4;
   }
 
 
@@ -19,9 +19,7 @@
   }
   .input-group-text:hover {
     color: #ddd;
-    background-color: #6F1E51;
-    text-decoration: underline;
-    
+    background-color: #8f7559;
   }
 
   .navbar {
@@ -33,6 +31,7 @@
 
   .footer {
     background-color: #EFE3D4;
+    font-size: small;
   }
 
   .my-text-primary-color {
@@ -45,6 +44,21 @@
   a:hover, a:active {
     color: #000;
   }
+
+  .packing-items {
+    background-color:#F7F9F9;
+  }
+
+
+  .vert-offset-top{
+    margin-top: -2em;
+  }
+
+  .offset-right{
+    margin-right: -2em;
+  }
+
+
   
 
  
