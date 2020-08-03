@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Layout.css";
+import "./Layout.scss";
 import icon from "./img/new_icon.png";
 
 const Layout = (props) => (
@@ -150,7 +150,7 @@ const Layout = (props) => (
                       <button className="input-group-text">+</button>
                     </div>
                   </div>
-                  <table class="table table-striped table-sm text-muted">
+                  <table className="table table-striped table-responsive-sm text-muted">
                     <tbody>
                       <tr>
                         <th scope="row">1</th>
