@@ -1,6 +1,13 @@
+.navbar {
+  background-color: #EFE3D4;
+  height: 40px;
+  font-size: small;
+}
+
 .list-group-item.active {
     z-index:2;
     color:#333;
+    font-weight:bolder;
     background-color:#F7F9F9;
     border-color:#EFE3D4;
   }
@@ -8,10 +15,9 @@
   .list-group-item:hover, .list-group-item:focus, .list-group-item.active:hover, .list-group-item.active:focus {
     z-index:2;
     color:#333;
-    background-color:#EFE3D4;
+    background-color:#EFE3D4;   
     border-color:#EFE3D4;
   }
-
 
   .input-group-text {
     color: #fff;
@@ -22,16 +28,9 @@
     background-color: #8f7559;
   }
 
-  .navbar {
-    background-color: #EFE3D4;
-    height: 40px;
+  .card-body {
     font-size: small;
-  }
-  
 
-  .footer {
-    background-color: #EFE3D4;
-    font-size: small;
   }
 
   .my-text-primary-color {
@@ -49,14 +48,30 @@
     background-color:#F7F9F9;
   }
 
-
   .vert-offset-top{
     margin-top: -2em;
   }
 
   .offset-right{
-    margin-right: -2em;
+    margin-right: -2.3em;
   }
+
+  .table {
+    font-size: small;
+  }
+
+ #destination, #add-item, placeholder{
+    font-weight: 100;
+
+  }
+
+
+  .footer {
+    background-color: #EFE3D4;
+    font-size: small;
+    padding-top: 1rem;
+  }
+
 
 
   
