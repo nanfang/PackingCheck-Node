@@ -59,6 +59,7 @@ const Layout = (props) => (
                   <input
                     type="text"
                     className="form-control"
+                    id="destination"
                     placeholder="Your next destination"
                   />
                   <div className="input-group-append">
@@ -123,90 +124,84 @@ const Layout = (props) => (
           <div className="col-md">
             <div className="card packing-items">
               <div className="card-header mx-auto" style={{ width: "100%" }}>
-                <h4 className="card-title text-left">Your trip to Wuhan </h4>
-                <h6 className="card-subtitle text-left text-muted">Checklist</h6>
+                <div className="float-left">
+                  <h4 className="card-title text-left">Your trip to Wuhan </h4>
+                  <h6 className="card-subtitle text-left text-muted">
+                    Checklist
+                  </h6>
+                </div>
+                <div className="float-right">
+                  <button className="btn btn-info btn-lg mt-1">Start Checking</button>
+                </div>
               </div>
               <div className="card-body">
                 <div className="card-text text-left">
-                  <ul className="list-group list-group-flush shadow-sm p-3 mb-3 bg-white rounded">
-                    <li className="list-group-item">
-                      <div
-                        className="input-group mb-3 mx-auto"
-                        style={{ width: "100%" }}
-                      >
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="New item"
-                        />
-                        <div className="input-group-append">
-                          <button className="input-group-text">
-                            Add a new item
-                          </button>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="list-group-item">
-                      Cras justo odio
-                      <div className="float-right my-text-primary-color ml-2">
-                        <a href="">⊗</a>
-                      </div>
-                      <div className="float-right my-text-primary-color">
-                        <a href="" className="px-2">
-                          △
-                        </a>
-                        <a href="">▽</a>
-                      </div>
-                    </li>
-                    <li className="list-group-item">
-                      Dapibus ac facilisis in
-                      <div className="float-right my-text-primary-color ml-2">
-                        <a href="">⊗</a>
-                      </div>
-                      <div className="float-right my-text-primary-color">
-                        <a href="" className="px-2">
-                          △
-                        </a>
-                        <a href="">▽</a>
-                      </div>
-                    </li>
-                    <li className="list-group-item">
-                      Morbi leo risus
-                      <div className="float-right my-text-primary-color ml-2">
-                        <a href="">⊗</a>
-                      </div>
-                      <div className="float-right my-text-primary-color">
-                        <a href="" className="px-2">
-                          △
-                        </a>
-                        <a href="">▽</a>
-                      </div>
-                    </li>
-                    <li className="list-group-item">
-                      Porta ac consectetur ac
-                      <div className="float-right my-text-primary-color ml-2">
-                        <a href="">⊗</a>
-                      </div>
-                      <div className="float-right my-text-primary-color">
-                        <a href="" className="px-2">
-                          △
-                        </a>
-                        <a href="">▽</a>
-                      </div>
-                    </li>
-                    <li className="list-group-item">
-                      Vestibulum at eros
-                      <div className="float-right my-text-primary-color ml-2">
-                        <a href="">⊗</a>
-                      </div>
-                      <div className="float-right my-text-primary-color">
-                        <a href="" className="px-2">
-                          △
-                        </a>
-                        <a href="">▽</a>
-                      </div>
-                    </li>
-                  </ul>
+                  <div
+                    className="input-group mb-3 mx-auto"
+                    style={{ width: "100%" }}
+                  >
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="add-item"
+                      placeholder="Add new item"
+                    />
+                    <div className="input-group-append">
+                      <button className="input-group-text">+</button>
+                    </div>
+                  </div>
+                  <table class="table table-striped table-sm text-muted">
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Cras justo odio</td>
+                        <td>
+                          {" "}
+                          <div className="float-right my-text-primary-color ml-2">
+                            <a href="">⊗</a>
+                          </div>
+                          <div className="float-right my-text-primary-color">
+                            <a href="" className="px-2">
+                              △
+                            </a>
+                            <a href="">▽</a>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Dapibus ac facilisis in</td>
+                        <td>
+                          {" "}
+                          <div className="float-right my-text-primary-color ml-2">
+                            <a href="">⊗</a>
+                          </div>
+                          <div className="float-right my-text-primary-color">
+                            <a href="" className="px-2">
+                              △
+                            </a>
+                            <a href="">▽</a>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Porta ac consectetur ac</td>
+                        <td>
+                          {" "}
+                          <div className="float-right my-text-primary-color ml-2">
+                            <a href="">⊗</a>
+                          </div>
+                          <div className="float-right my-text-primary-color">
+                            <a href="" className="px-2">
+                              △
+                            </a>
+                            <a href="">▽</a>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
