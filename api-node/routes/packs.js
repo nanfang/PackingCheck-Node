@@ -3,6 +3,8 @@ const packsController = require('../controller/packs');
 const router = express.Router();
 
 // GET /v1/packs
-router.get('/packs', packsController.getPacks)
+router.get('/packs', packsController.getPacks);
+router.post('/packs', packsController.createPack);
+router.get('/packs/:packId/items', packsController.getPackItems);
 
 module.exports = router;

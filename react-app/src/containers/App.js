@@ -1,4 +1,4 @@
-import React, {useState, Component} from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import Packs from "./Packs/Packs";
 import Layout from "../components/Layout/Layout";

@@ -5,7 +5,8 @@ import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://my-json-server.typicode.com/nanfang/fakejson';
+// axios.defaults.baseURL = 'http://my-json-server.typicode.com/nanfang/fakejson';
+axios.defaults.baseURL = 'http://localhost:8080/v1';
 // https://packingcheck-api-lite.firebaseio.com/
 
 ReactDOM.render(
