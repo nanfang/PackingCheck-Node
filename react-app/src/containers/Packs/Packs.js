@@ -48,8 +48,25 @@ class Packs extends Component {
         }
     };
 
-    removePack = (packId) => {
+    removePack = (packId, event) => {
         console.log(`remove pack ${packId}`);
+        // axios.delete("/packs", packId)
+        //     .then(response => {
+        //
+        //     });
+        // remove pack when id===packId
+
+        this.setState({
+            packs: this.state.packs.filter((item, index) => {
+                return item.id !== packId;
+            })
+        })
+        if (packId === this.state.selectedPack.id) {
+            this.setState({
+                selectedPack: {id: null, name: ''}
+            })
+        }
+        event.stopPropagation();
     };
 
     getPackName = (packId) => {
@@ -60,7 +77,7 @@ class Packs extends Component {
         return '';
     }
 
-    selectPack = (packId) => {
+    selectPack = (packId, event) => {
         if (this.state.selectedPack.id !== packId) {
             const packName = this.getPackName(packId);
             this.setState({selectedPack: {id: packId, name: packName}, packItems: []})
@@ -74,8 +91,8 @@ class Packs extends Component {
             return <Pack key={pack.id}
                          name={pack.name}
                          isSelected={pack.id === this.state.selectedPack.id}
-                         click={() => this.selectPack(pack.id)}
-                         remove={() => this.removePack(pack.id)}/>
+                         select={event => this.selectPack(pack.id, event)}
+                         remove={event => this.removePack(pack.id, event)}/>
         });
 
         return packs;
@@ -83,14 +100,16 @@ class Packs extends Component {
 
 
     itemsForRender = () => {
+
+        console.log("select", this.state.selectedPack);
         let packItems = this.state.selectedPack.id ?
-            <div>Loading ...!</div> : <div>Please select a pack to show items</div>;
+            <tr><td>Loading ...!</td></tr> : <tr><td>Please select a pack to show items</td></tr>;
         // const packItems = this.state.selectedPack.id?
         //     <PackItems items={this.state.items}>:<div>Please select a pack to show items</div>;
         if (this.state.packItems.length > 0) {
             packItems = this.state.packItems.map((item, index) =>
                 <tr key={item.id}>
-                    <th scope="row">{index+1}</th>
+                    <th scope="row">{index + 1}</th>
                     <td>{item.name}</td>
                     <td>
                         {" "}

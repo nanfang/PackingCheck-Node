@@ -7,7 +7,7 @@ const Pack = (props) => {
     if(props.isSelected)
         className = 'list-group-item active';
     return (
-        <li className={className} onClick={props.click}>
+        <li className={className} onClick={props.select}>
             {props.name}
             {/*{props.isSelected? }*/}
             <a href="#remove" className="float-right" onClick={props.remove}>

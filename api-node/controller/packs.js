@@ -60,7 +60,7 @@ exports.createPack = (req, res, next) => {
             res.status(201).json(
                 {
                     message: 'Package created successfully',
-                    pack: result
+                    pack: {id: result.insertId}
                 }
             )
         })
