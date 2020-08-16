@@ -1,13 +1,13 @@
-const packs = [
-    {
-        id: 2,
-        name: "Move to London"
-    },
-    {
-        id: 1,
-        name: "Back to Vancouver"
-    }
-]
+// const packs = [
+//     {
+//         id: 2,
+//         name: "Move to London"
+//     },
+//     {
+//         id: 1,
+//         name: "Back to Vancouver"
+//     }
+// ]
 
 const packItems =
     {
@@ -21,10 +21,25 @@ const packItems =
             ],
 
     }
-
+const db = require('../utils/db')
 
 exports.getPacks = (req, res, next) => {
-    res.status(200).json(packs);
+    db.execute('SELECT * FROM packs ORDER BY id DESC')
+        .then(result => {
+            const rows = result[0];
+            const packs = rows.map((row, index) => {
+                return {
+                    id: row.id,
+                    name: row.name
+                }
+            })
+            console.log(packs);
+            res.status(200).json(packs);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+
 };
 
 // GET /v2/packs/{packId}/items
@@ -38,17 +53,21 @@ exports.getPackItems = (req, res, next) => {
 
 exports.createPack = (req, res, next) => {
     const name = req.body.name;
-    console.log(name);
     // TODO: create pack in database
-    const newPackID = packs.length + 1;
-    const newPack = {id: newPackID, name: name};
-    packs.unshift(newPack);
-    packItems[newPackID] = [];
-    res.status(201).json(
-        {
-            message: 'Package created successfully',
-            pack: newPack
-        }
-    )
+    db.execute('INSERT INTO packs (user_id, name) VALUES (?, ?)', [1, name])
+        .then(result => {
+            console.log(result);
+            res.status(201).json(
+                {
+                    message: 'Package created successfully',
+                    pack: result
+                }
+            )
+        })
+        .catch(err => {
+            console.log(err);
+        });
+
+
 };
 
