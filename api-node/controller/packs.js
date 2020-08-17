@@ -18,9 +18,10 @@ const packItems =
         1: [{id: 3, name: 'Cash'},
             {id: 2, name: 'Passport'},
             {id: 1, name: 'Phone'},
-            ],
+        ],
 
     }
+
 const db = require('../utils/db')
 
 exports.getPacks = (req, res, next) => {
@@ -33,7 +34,7 @@ exports.getPacks = (req, res, next) => {
                     name: row.name
                 }
             })
-            console.log(packs);
+            // console.log(packs);
             res.status(200).json(packs);
         })
         .catch(err => {
@@ -47,7 +48,7 @@ exports.getPackItems = (req, res, next) => {
     const packId = req.params.packId;
     console.log(`packId=${packId}`);
 
-    res.status(200).json(packItems[req.params.packId]);
+    res.status(200).json(packItems[packId] || []);
 };
 
 
@@ -60,14 +61,33 @@ exports.createPack = (req, res, next) => {
             res.status(201).json(
                 {
                     message: 'Package created successfully',
-                    pack: {id: result.insertId}
+                    pack: {id: result[0].insertId}
                 }
             )
         })
         .catch(err => {
             console.log(err);
         });
-
-
 };
 
+exports.removePack = (req, res, next) => {
+    const packId = req.params.packId;
+    db.execute('DELETE FROM packs WHERE id = ?', [packId])
+        .then(
+            result => {
+                db.execute('DELETE FROM pack_items WHERE pack_id = ?', [packId])
+                    .then(result => {
+                        // console.log(result);
+                        res.status(200).json(
+                            {
+                                message: 'Package created successfully',
+                            }
+                        )
+                    })
+            }
+        )
+        .catch(err => {
+            console.log(err);
+        });
+
+};

@@ -9,7 +9,7 @@ class Packs extends Component {
         newPack: '',
         packs: [],
         selectedPack: {id: null, name: ''},
-        packItems: []
+        packItems: null
     }
 
     componentDidMount() {
@@ -19,7 +19,6 @@ class Packs extends Component {
     loadPacks = () => {
         axios.get("/packs")
             .then(response => {
-                console.log(response)
                 this.setState({packs: response.data})
             });
     }
@@ -29,7 +28,7 @@ class Packs extends Component {
             return []
         const url = `/packs/${packId}/items`;
         axios.get(url).then(response => {
-            console.log(response.data);
+            // console.log('loaded items', response.data);
             this.setState({packItems: response.data});
         });
     }
@@ -50,23 +49,22 @@ class Packs extends Component {
 
     removePack = (packId, event) => {
         console.log(`remove pack ${packId}`);
-        // axios.delete("/packs", packId)
-        //     .then(response => {
-        //
-        //     });
-        // remove pack when id===packId
-
-        this.setState({
-            packs: this.state.packs.filter((item, index) => {
-                return item.id !== packId;
-            })
-        })
-        if (packId === this.state.selectedPack.id) {
-            this.setState({
-                selectedPack: {id: null, name: ''}
-            })
-        }
+        axios.delete(`/packs/${packId}`)
+            .then(response => {
+                this.setState({
+                    packs: this.state.packs.filter((item, index) => {
+                        return item.id !== packId;
+                    })
+                })
+                if (packId === this.state.selectedPack.id) {
+                    this.setState({
+                        selectedPack: {id: null, name: ''},
+                        items: null
+                    })
+                }
+            });
         event.stopPropagation();
+
     };
 
     getPackName = (packId) => {
@@ -80,7 +78,7 @@ class Packs extends Component {
     selectPack = (packId, event) => {
         if (this.state.selectedPack.id !== packId) {
             const packName = this.getPackName(packId);
-            this.setState({selectedPack: {id: packId, name: packName}, packItems: []})
+            this.setState({selectedPack: {id: packId, name: packName}, packItems: null})
             this.loadItems(packId);
         }
     };
@@ -89,6 +87,7 @@ class Packs extends Component {
     packsForRender = () => {
         const packs = this.state.packs.map((pack, index) => {
             return <Pack key={pack.id}
+                // name={pack.name + '-' + pack.id}
                          name={pack.name}
                          isSelected={pack.id === this.state.selectedPack.id}
                          select={event => this.selectPack(pack.id, event)}
@@ -100,13 +99,18 @@ class Packs extends Component {
 
 
     itemsForRender = () => {
-
-        console.log("select", this.state.selectedPack);
-        let packItems = this.state.selectedPack.id ?
-            <tr><td>Loading ...!</td></tr> : <tr><td>Please select a pack to show items</td></tr>;
+        // console.log("select", this.state.selectedPack);
+        let packItems = this.state.selectedPack.id === null ?
+            <tr>
+                <td>Please select a pack to show items</td>
+            </tr> :
+            <tr>
+                <td>Loading ...!</td>
+            </tr>;
         // const packItems = this.state.selectedPack.id?
         //     <PackItems items={this.state.items}>:<div>Please select a pack to show items</div>;
-        if (this.state.packItems.length > 0) {
+        if (this.state.selectedPack.id && this.state.packItems !== null) {
+            console.log('render items', this.state.packItems);
             packItems = this.state.packItems.map((item, index) =>
                 <tr key={item.id}>
                     <th scope="row">{index + 1}</th>
@@ -177,20 +181,15 @@ class Packs extends Component {
                             </div>
                             <div className="card-body">
                                 <div className="card-text text-left">
-                                    <div
-                                        className="input-group mb-3 mx-auto"
-                                        style={{width: "100%"}}
-                                    >
-                                        <input
-                                            type="text"
-                                            className="form-control"
-                                            id="add-item"
-                                            placeholder="Add new item"
-                                        />
+                                    {this.state.selectedPack.id &&
+                                    <div className="input-group mb-3 mx-auto" style={{width: "100%"}}>
+                                        <input type="text" className="form-control" id="add-item"
+                                               placeholder="Add new item"/>
                                         <div className="input-group-append">
                                             <button className="input-group-text">+</button>
                                         </div>
                                     </div>
+                                    }
                                     <table className="table table-striped table-responsive-sm text-muted">
                                         <tbody>
                                         {packItems}
