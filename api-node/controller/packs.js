@@ -46,18 +46,16 @@ exports.getPacks = (req, res, next) => {
 // GET /v2/packs/{packId}/items
 exports.getPackItems = (req, res, next) => {
     const packId = req.params.packId;
-    console.log(`packId=${packId}`);
-
+    // console.log(`packId=${packId}`);
     res.status(200).json(packItems[packId] || []);
 };
 
 
 exports.createPack = (req, res, next) => {
     const name = req.body.name;
-    // TODO: create pack in database
     db.execute('INSERT INTO packs (user_id, name) VALUES (?, ?)', [1, name])
         .then(result => {
-            console.log(result);
+            // console.log(result);
             res.status(201).json(
                 {
                     message: 'Package created successfully',
@@ -73,21 +71,15 @@ exports.createPack = (req, res, next) => {
 exports.removePack = (req, res, next) => {
     const packId = req.params.packId;
     db.execute('DELETE FROM packs WHERE id = ?', [packId])
+        .then(result => {
+            return db.execute('DELETE FROM pack_items WHERE pack_id = ?', [packId]);
+        })
         .then(
             result => {
-                db.execute('DELETE FROM pack_items WHERE pack_id = ?', [packId])
-                    .then(result => {
-                        // console.log(result);
-                        res.status(200).json(
-                            {
-                                message: 'Package created successfully',
-                            }
-                        )
-                    })
+                res.status(200).json({message: 'Package created successfully'});
             }
-        )
-        .catch(err => {
-            console.log(err);
-        });
-
+        ).catch(err => {
+        console.log(err);
+    });
 };
+
