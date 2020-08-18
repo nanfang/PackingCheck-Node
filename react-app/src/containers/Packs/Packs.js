@@ -9,7 +9,8 @@ class Packs extends Component {
         newPack: '',
         packs: [],
         selectedPack: {id: null, name: ''},
-        packItems: null
+        packItems: null,
+        newItem: ''
     }
 
     componentDidMount() {
@@ -31,7 +32,7 @@ class Packs extends Component {
             // console.log('loaded items', response.data);
             this.setState({packItems: response.data});
         });
-    }
+    };
 
     addPack = () => {
         const packs = [...this.state.packs];
@@ -43,6 +44,31 @@ class Packs extends Component {
                     newPack.id = response.data.pack.id;
                     packs.unshift(newPack);
                     this.setState({packs: packs})
+                });
+        }
+    };
+
+    addItem = () => {
+        const newItemName = this.state.newItem.trim();
+        // verify duplication
+        if (this.state.packItems)
+            for (let i = 0; i < this.state.packItems.length; i++) {
+                if(this.state.packItems[i].name === newItemName){
+                    console.log('Existed item, abort adding');
+                    return
+                }
+            }
+
+        if (this.state.selectedPack.id && this.state.newItem.trim().length > 0) {
+            const packItems = [...this.state.packItems];
+            const newItem = {name: newItemName};
+            const packId = this.state.selectedPack.id;
+
+            axios.post(`/packs/${packId}/items`, newItem)
+                .then(response => {
+                    newItem.id = response.data.itemId;
+                    packItems.unshift(newItem);
+                    this.setState({packItems: packItems})
                 });
         }
     };
@@ -184,9 +210,14 @@ class Packs extends Component {
                                     {this.state.selectedPack.id &&
                                     <div className="input-group mb-3 mx-auto" style={{width: "100%"}}>
                                         <input type="text" className="form-control" id="add-item"
-                                               placeholder="Add new item"/>
+                                               placeholder="Add new item"
+                                               value={this.state.newItem}
+                                               onChange={(event) => {
+                                                   this.setState({newItem: event.target.value})
+                                               }}
+                                               />
                                         <div className="input-group-append">
-                                            <button className="input-group-text">+</button>
+                                            <button className="input-group-text" onClick={this.addItem}>+</button>
                                         </div>
                                     </div>
                                     }
