@@ -4,9 +4,7 @@ import "./Layout.scss";
 import Header from "./Header";
 import Footer from "./Footer";
 
-
 const Layout = (props) => {
-
   return (
       <React.Fragment>
         <Header/>

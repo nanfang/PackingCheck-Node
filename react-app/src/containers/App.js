@@ -1,18 +1,20 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
 import Packs from "./Packs/Packs";
 import Layout from "../components/Layout/Layout";
+import {useAuth0} from "@auth0/auth0-react";
+import Welcome from "../components/Welcome/Welcome";
 
-class App extends Component {
-    render = () => {
-        return (
-            <div className="App">
-                <Layout>
-                    <Packs/>
-                </Layout>
-            </div>
-        );
-    }
+const App = () => {
+    const {user, isAuthenticated} = useAuth0();
+    const content = isAuthenticated? <Packs user={user}/>: <Welcome/>;
+    return (
+        <div className="App">
+            <Layout>
+                {content}
+            </Layout>
+        </div>
+    );
 }
 
 export default App;

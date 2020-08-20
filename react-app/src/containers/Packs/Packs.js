@@ -13,6 +13,12 @@ class Packs extends Component {
         newItem: ''
     }
 
+    constructor(props) {
+        super(props);
+        console.log(this.props.user);
+        console.log(this.props.user.user_id);
+    }
+
     componentDidMount() {
         this.loadPacks();
     }
@@ -159,7 +165,6 @@ class Packs extends Component {
         return packItems;
     }
 
-
     render() {
         const packs = this.packsForRender();
         const packItems = this.itemsForRender();
@@ -232,19 +237,6 @@ class Packs extends Component {
                     </div>
                 </div>
             </div>
-            // {/*<section className="left">*/}
-            // {/*    <h1>Packs</h1>*/}
-            // {/*    <input type="text" value={this.state.newPack}*/}
-            // {/*           onChange= {(event) =>*/}
-            // {/*           {this.setState({newPack: event.target.value})}*/}
-            // {/*           }/>*/}
-            // {/*    <button onClick={this.addPack}>Create a new pack</button>*/}
-            // {/*    {packs}*/}
-            // {/*</section>*/}
-            // {/*<section className="left">*/}
-            // {/*    <h1>Packing Items {this.state.selectedPack.name}</h1>*/}
-            // {/*    {packItems}*/}
-            // {/*</section>*/}
         );
     }
 }
