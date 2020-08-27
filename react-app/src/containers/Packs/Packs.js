@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import axios from 'axios';
 import Pack from "../../components/Pack/Pack";
 import './Packs.css';
+import { withAuth0 } from '@auth0/auth0-react';
 
 class Packs extends Component {
 
@@ -11,12 +12,6 @@ class Packs extends Component {
         selectedPack: {id: null, name: ''},
         packItems: null,
         newItem: ''
-    }
-
-    constructor(props) {
-        super(props);
-        console.log(this.props.user);
-        console.log(this.props.user.user_id);
     }
 
     componentDidMount() {
@@ -166,6 +161,8 @@ class Packs extends Component {
     }
 
     render() {
+        const { user,  getAccessTokenSilently} = this.props.auth0;
+        console.log('user=', user);
         const packs = this.packsForRender();
         const packItems = this.itemsForRender();
         return (
@@ -241,4 +238,4 @@ class Packs extends Component {
     }
 }
 
-export default Packs;
+export default withAuth0(Packs);

@@ -6,8 +6,8 @@ import {useAuth0} from "@auth0/auth0-react";
 import Welcome from "../components/Welcome/Welcome";
 
 const App = () => {
-    const {user, isAuthenticated} = useAuth0();
-    const content = isAuthenticated? <Packs user={user}/>: <Welcome/>;
+    const {isAuthenticated} = useAuth0();
+    const content = isAuthenticated? <Packs/>: <Welcome/>;
     return (
         <div className="App">
             <Layout>

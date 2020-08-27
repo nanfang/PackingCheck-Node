@@ -9,7 +9,8 @@ import {Auth0Provider} from "@auth0/auth0-react";
 // FIXME config it
 // https://packingcheck-api-lite.firebaseio.com/
 // axios.defaults.baseURL = 'http://my-json-server.typicode.com/nanfang/fakejson';
-axios.defaults.baseURL = 'http://localhost:8080/v1';
+const API_URL = 'http://localhost:8080/v1';
+axios.defaults.baseURL = API_URL
 
 ReactDOM.render(
     <Auth0Provider
@@ -18,6 +19,8 @@ ReactDOM.render(
         // FIXME config it
         clientId="e56qkqH674o9j7KafIsGZtKB3veh7vTl"
         redirectUri={window.location.origin}
+        // audience={API_URL}
+        // scope="read:current_user update:current_user_metadata"
     >
         <React.StrictMode>
             <App/>
