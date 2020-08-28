@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import axios from 'axios';
 import Pack from "../../components/Pack/Pack";
 import './Packs.css';
-import { withAuth0 } from '@auth0/auth0-react';
+import {withAuth0} from '@auth0/auth0-react';
 
 class Packs extends Component {
 
@@ -18,11 +18,20 @@ class Packs extends Component {
         this.loadPacks();
     }
 
-    loadPacks = () => {
-        axios.get("/packs")
+    loadPacks = async () => {
+        const {getAccessTokenSilently} = this.props.auth0;
+        const access_token = await getAccessTokenSilently();
+        console.log('access_token = ', access_token);
+
+        axios.get("/packs", {
+            headers: {
+                'Authorization': `Bearer ${access_token}`
+            }})
             .then(response => {
                 this.setState({packs: response.data})
             });
+
+
     }
 
     loadItems = (packId) => {
@@ -54,7 +63,7 @@ class Packs extends Component {
         // verify duplication
         if (this.state.packItems)
             for (let i = 0; i < this.state.packItems.length; i++) {
-                if(this.state.packItems[i].name === newItemName){
+                if (this.state.packItems[i].name === newItemName) {
                     console.log('Existed item, abort adding');
                     return
                 }
@@ -161,7 +170,7 @@ class Packs extends Component {
     }
 
     render() {
-        const { user,  getAccessTokenSilently} = this.props.auth0;
+        const {user, getAccessTokenSilently} = this.props.auth0;
         console.log('user=', user);
         const packs = this.packsForRender();
         const packItems = this.itemsForRender();
@@ -217,7 +226,7 @@ class Packs extends Component {
                                                onChange={(event) => {
                                                    this.setState({newItem: event.target.value})
                                                }}
-                                               />
+                                        />
                                         <div className="input-group-append">
                                             <button className="input-group-text" onClick={this.addItem}>+</button>
                                         </div>
