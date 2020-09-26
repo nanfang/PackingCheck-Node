@@ -1,10 +1,4 @@
-# PackingCheck
-PackingCheck source code
- - react-app: single page application by React
- - api-node: NodeJS backend API
- - mobile-app: mobile applicaiton by React Native
- 
- 
+# PackingCheck API using Node
 #  Set up api-node
 ### Set up mysql
 ```
