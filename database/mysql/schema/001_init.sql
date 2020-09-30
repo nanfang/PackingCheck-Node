@@ -11,7 +11,7 @@ CREATE TABLE items (
     name VARCHAR(256) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
     PRIMARY KEY (id)
-¡);
+);
 
 CREATE TABLE pack_items (
     pack_id BIGINT NOT NULL,
